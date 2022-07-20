@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,5 +19,13 @@ Route::get('/', function () {
 });
 
 Route::get('/products', function () {
-    return view('products/index');
+    $products = DB::table('products')->get();
+    $data['products'] = $products;
+    return view('products/index', $data);
+});
+
+Route::get('/users', function () {
+    $users = DB::table('users')->get();
+    $data['users'] = $users;
+    return view('users/index', $data);
 });
