@@ -14,8 +14,28 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        $category1 = new \App\Models\Category();
-        $category1->name = 'Music';
-        $category1->save();
+        $category = new \App\Models\Category();
+        $category->name = 'Music';
+        $category->save();
+
+        $category = new \App\Models\Category();
+        $category->name = 'Gaming';
+        $category->save();
+
+        $category = new \App\Models\Category();
+        $category->name = 'Cars';
+        $category->save();
+
+        $category = new \App\Models\Category();
+        $category->name = 'ICT';
+        $category->save();
+
+        $category = new \App\Models\Category();
+        $category->name = 'Toys';
+        $category->save();
+
+        $category = new \App\Models\Category();
+        $category->name = 'Clothing';
+        $category->save();
     }
 }
