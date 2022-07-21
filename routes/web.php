@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\ProductsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,18 +15,13 @@ use Illuminate\Support\Facades\DB;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [ProductsController::class, 'index']);
+Route::get('/products/{product}', [ProductsController::class, 'show']);
 
-Route::get('/products', function () {
-    $products = DB::table('products')->get();
-    $data['products'] = $products;
-    return view('products/index', $data);
-});
+// Route::get('/users/{user}', function () {
+//     $user = DB::table('users')->where('id', 2)->first();
+//     $data['user'] = $user;
+//     return view('users/index', $data);
+// });
 
-Route::get('/users', function () {
-    $users = DB::table('users')->get();
-    $data['users'] = $users;
-    return view('users/index', $data);
-});
+Route::get('/users/{user}', [UserController::class, 'user']);
