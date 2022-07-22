@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,10 +19,6 @@ use App\Http\Controllers\ProductsController;
 Route::get('/', [ProductsController::class, 'index']);
 Route::get('/products/{product}', [ProductsController::class, 'show']);
 
-// Route::get('/users/{user}', function () {
-//     $user = DB::table('users')->where('id', 2)->first();
-//     $data['user'] = $user;
-//     return view('users/index', $data);
-// });
 
-Route::get('/users/{user}', [UserController::class, 'user']);
+Route::get('/users/{user}', [UserController::class, 'index']);
+

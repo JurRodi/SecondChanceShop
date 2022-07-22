@@ -7,8 +7,8 @@ use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
-    public function user(){
-        $user = DB::table('users')->where('id', 1)->first();
+    public function index($id){
+        $user = DB::table('users')->where('id', $id)->first();
         $data['user'] = $user;
         return view('users/index', $data);
     }
