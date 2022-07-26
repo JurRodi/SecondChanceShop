@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('description');
             $table->string('price');
-            $table->string('image');
+            $table->string('image')->default('default.jpg');
             $table->foreignId('user_id');
             $table->foreignId('category_id');
             $table->timestamps();
