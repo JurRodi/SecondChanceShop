@@ -17,8 +17,13 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', [ProductsController::class, 'index']);
+Route::get('/products/create', [ProductsController::class, 'create']);
+Route::post('/products/store', [ProductsController::class, 'store']);
 Route::get('/products/{product}', [ProductsController::class, 'show']);
 
 
+Route::get('/register', [UserController::class, 'register']);
+Route::post('/register', [UserController::class, 'store']);
+Route::get('/login', [UserController::class, 'login']);
+Route::post('/login', [UserController::class, 'verify']);
 Route::get('/users/{user}', [UserController::class, 'index']);
-
