@@ -1,5 +1,37 @@
 @extends('layouts/app')
 
 @section('content')
-    <p>{{ $user->name }}</p>
+    <div class="d-flex w-100 mt-5 justify-content-around">
+        <div class="d-flex">
+            <img src="{{ asset('storage/avatars/'.$user->avatar) }}" alt="{{ $user->name }}" class="img-fluid rounded-circle me-4" style="width: 100px; height: 100px;">
+            <p class="mt-3">{{ $user->name }}</p>
+        </div>
+        <div>
+            @if(\Auth::user() && \Auth::user()->id == $user->id)
+                <a href="/users/edit/{{ $user->id }}" class="btn btn-primary">Edit</a>
+            @else
+                <a href="/messages/create/{{ $user->id }}" class="btn btn-primary">Send message</a>
+            @endif
+        </div>
+    </div>
+    <div class="mt-5">
+        <div class="d-flex flex-wrap justify-content-between">
+            @foreach($products as $product)
+                @component('components/card')
+                    @slot('image')
+                        {{ $product->image }}
+                    @endslot
+                    @slot('name')
+                        {{ $product->name }}
+                    @endslot
+                    @slot('description')
+                        {{ $product->description }}
+                    @endslot
+                    @slot('id')
+                        {{ $product->id }}
+                    @endslot
+                @endcomponent
+            @endforeach
+        </div>
+    </div>
 @endsection
