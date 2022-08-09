@@ -1,18 +1,25 @@
 @extends('layouts/app')
 
 @section('content')
-    <h1>Products</h1>
-
-    <div class="container" style="display: flex; flex-wrap:wrap;">
-    @foreach($products as $product)
-        <div class="card container-sm" style="width: 18rem;">
-        <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">{{ $product->name }}</h5>
-                <p class="card-text">{{ $product->description }}</p>
-                <a href="/products/{{ $product->id }}" class="btn btn-primary">Show</a>
-            </div>
-        </div>
-    @endforeach
+    <div class="mb-3">
+        <a href="/products/create" class="btn btn-primary">Add product</a>
+    </div>
+    <div style="display: flex; flex-wrap:wrap;">
+        @foreach($products as $product)
+            @component('components/card')
+                @slot('image')
+                    {{ $product->image }}
+                @endslot
+                @slot('name')
+                    {{ $product->name }}
+                @endslot
+                @slot('description')
+                    {{ $product->description }}
+                @endslot
+                @slot('id')
+                    {{ $product->id }}
+                @endslot
+            @endcomponent
+        @endforeach
     </div>
 @endsection
