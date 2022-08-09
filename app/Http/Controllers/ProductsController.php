@@ -40,13 +40,8 @@ class ProductsController extends Controller
         $product->name = $request->name;
         $product->price = $request->price;
         $product->description = $request->description;
-        // $img_name = $request->file('image')->getRealPath();
-        // $product->image = $img_name;
-        // Cloudder::upload($img_name, null);
-        // $url = cloudinary()->upload($request->file('image')->getRealPath())->getSecurePath();
         if($request->hasFile('image')){
-            $url = $request->file('image')->getClientOriginalName();
-            $request->file('image')->store('public/images');
+            $url = cloudinary()->upload($request->file('image')->getRealPath())->getSecurePath();
             $product->image = $url;
         }
         $product->category_id = $request->category_id;
@@ -77,8 +72,7 @@ class ProductsController extends Controller
         $product->price = $request->price;
         $product->description = $request->description;
         if($request->hasFile('image')){
-            $url = $request->file('image')->getClientOriginalName();
-            $request->file('image')->store('public/images');
+            $url = cloudinary()->upload($request->file('image')->getRealPath())->getSecurePath();
             $product->image = $url;
         }
         $product->category_id = $request->category_id;

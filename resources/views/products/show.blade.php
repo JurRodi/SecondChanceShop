@@ -1,7 +1,7 @@
 @extends('layouts/app')
 
 @section('content')
-    <div class="w-50 ms-5 mb-3 bg-light d-flex justify-content-center" style="height: 500px;"><img src="{{ asset('storage/images/'.$product->image) }}" alt="{{ $product->name }}" class="img-fluid"></div>
+    <div class="w-50 ms-5 mb-3 bg-light d-flex justify-content-center" style="height: 500px;"><img src="{{ $product->image }}" alt="{{ $product->name }}" class="img-fluid"></div>
     <div class="ms-5 w-50 d-flex justify-content-between">
         <div style="width: 70%;">
             <h3>{{ $product->name }}</h3>
