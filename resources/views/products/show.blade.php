@@ -11,7 +11,11 @@
             <p>{{ $product->category->name }}</p>
             <h5>Posted by</h5>
             <div class="mb-3">
-                <img src="{{ asset('storage/avatars/'.$product->user->avatar) }}" alt="{{ $product->user->name }}" class="img-fluid rounded-circle me-2" style="width: 50px; height: 50px;">
+                @if($product->user->avatar == "avatar.svg")
+                    <img src="{{ asset('storage/avatars/'.$product->user->avatar) }}" alt="{{ $product->user->name }}" class="img-fluid rounded-circle me-2" style="width: 50px; height: 50px;">
+                @else
+                    <img src="{{ $product->user->avatar }}" alt="{{ $product->user->name }}" class="img-fluid rounded-circle me-2" style="width: 50px; height: 50px;">
+                @endif
                 <a href="/users/{{ $product->user_id }}">{{ $product->user->name }}</a>
             </div>
         </div>

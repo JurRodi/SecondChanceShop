@@ -68,18 +68,20 @@ class UserController extends Controller
         return view('users/edit', $data);
     }
 
-    // update profile picture
     public function update(Request $request, \App\Models\User $user){
         $request->validate([
+            'name' => 'required|max:255',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
+        $user->name = $request->name;
         if($request->hasFile('image')){
-            $url = $request->file('image')->getClientOriginalName();
-            $request->file('image')->store('public/images');
-            $user->image = $url;
+            $url = cloudinary()->upload($request->file('image')->getRealPath())->getSecurePath();
+            $user->avatar = $url;
         }
         $user->save();
-        return redirect('/users/index');
+        $request->flash();
+        $request->session()->flash('message', 'Profile updated successfully!');
+        return redirect('/users/edit/'.$user->id);
     }
 
     public function favorites(\App\Models\User $user){

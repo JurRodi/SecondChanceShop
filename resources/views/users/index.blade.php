@@ -2,8 +2,12 @@
 
 @section('content')
     <div class="d-flex w-100 mt-5 justify-content-around">
-        <div class="d-flex">
-            <img src="{{ asset('storage/avatars/'.$user->avatar) }}" alt="{{ $user->name }}" class="img-fluid rounded-circle me-4" style="width: 100px; height: 100px;">
+        <div class="d-flex" style="width: 35%;">
+            @if($user->avatar == "avatar.svg")
+                <img src="{{ asset('storage/avatars/'.$user->avatar) }}" alt="{{ $user->name }}" class="img-fluid rounded-circle me-4" style="width: 100px; height: 100px;">
+            @else
+                <img src="{{ $user->avatar }}" alt="{{ $user->name }}" class="img-fluid rounded-circle me-4" style="width: 100px; height: 100px;">
+            @endif
             <p class="mt-3">{{ $user->name }}</p>
         </div>
         <div>
