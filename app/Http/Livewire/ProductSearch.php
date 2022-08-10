@@ -10,14 +10,10 @@ class ProductSearch extends Component
     public $search;
     public $products = [];
 
-    public function mount()
-    {
-        $this->products = \App\Models\Product::where('name', 'like', '%' . 'nin' . '%')->get();
-    }
-
     public function search()
     {
         $this->products = \App\Models\Product::where('name', 'like', "%{$this->search}%")->take(8)->get();
+        $this->products = \App\Models\Product::where('description', 'like', "%{$this->search}%")->take(8)->get();
     }
 
     public function render()
