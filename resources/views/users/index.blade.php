@@ -8,7 +8,7 @@
             @else
                 <img src="{{ $user->avatar }}" alt="{{ $user->name }}" class="img-fluid rounded-circle me-4" style="width: 100px; height: 100px;">
             @endif
-            <p class="mt-3">{{ $user->name }}</p>
+            <h5 class="mt-3">{{ $user->name }}</h5>
         </div>
         <div>
             @if(\Auth::user() && \Auth::user()->id == $user->id)
