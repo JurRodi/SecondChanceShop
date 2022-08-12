@@ -27,9 +27,10 @@
                         <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                             {{ \Illuminate\Support\Facades\Auth::user()->name }}
                         </button>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown" style="right: 0; left: auto;">
                             <li><a class="dropdown-item" href="/users/{{ \Auth::user()->id }}">Profile</a></li>
                             <li><a class="dropdown-item" href="/users/favorites/{{ \Auth::user()->id }}">favorites</a></li>
+                            <li><a class="dropdown-item" href="/messages/{{ \Auth::user()->id }}">Messages</a></li>
                             <li><a class="dropdown-item" href="/logout">Logout</a></li>
                         </ul>
                     </div>
@@ -47,12 +48,17 @@
         @yield('content')
     </div>
     
-    <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"></script> -->
-    <!-- <script src="/js/app.js"></script> -->
     <script>
-        //show dropdown items on click
         document.querySelector('.dropdown-toggle').addEventListener('click', function() {
             document.querySelector('.dropdown-menu').classList.toggle('show');
+        });
+        document.addEventListener('click', function(e) {
+            if (!e.target.matches('.dropdown-toggle')) {
+                var dropdowns = document.querySelectorAll('.dropdown-menu');
+                for (var i = 0; i < dropdowns.length; i++) {
+                    dropdowns[i].classList.remove('show');
+                }
+            }
         });
 
     </script>
