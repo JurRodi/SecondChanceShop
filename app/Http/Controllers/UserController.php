@@ -86,7 +86,8 @@ class UserController extends Controller
 
     public function favorites(\App\Models\User $user){
         $data['user'] = $user;
-        $products = DB::table('products')->where('user_id', $user->id)->get();
+        $favorites = DB::table('favorite_products')->where('user_id', $user->id)->get();
+        $products = DB::table('products')->whereIn('id', $favorites->pluck('product_id'))->get();
         $data['products'] = $products;
         return view('users/favorites', $data);
     }

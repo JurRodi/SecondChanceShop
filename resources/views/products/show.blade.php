@@ -1,6 +1,18 @@
 @extends('layouts/app')
 
 @section('content')
+
+    @if($errors->any())
+        @component('components/alert')
+            @slot('type')
+                danger
+            @endslot
+            @foreach ($errors->all() as $error)
+                {{ $error }}<br>
+            @endforeach
+        @endcomponent
+    @endif
+
     <div class="w-50 ms-5 mb-3 bg-light d-flex justify-content-center" style="height: 500px;"><img src="{{ $product->image }}" alt="{{ $product->name }}" class="img-fluid"></div>
     <div class="ms-5 w-50 d-flex justify-content-between">
         <div style="width: 70%;">
@@ -30,11 +42,7 @@
             </div>
         @else
             <div>
-                <form method="POST" action="/products/favorite/{{ $product->id }}" class="d-inline">
-                    @method('POST')
-                    @csrf
-                    <button type="submit" class="btn btn-warning">Favorite</button>
-                </form>
+                <livewire:favorite-products :product="$product" />
                 <form method="POST" action="/products/bid/{{ $product->id }}" class="d-inline">
                     @method('POST')
                     @csrf
