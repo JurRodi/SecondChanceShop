@@ -30,7 +30,7 @@
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown" style="right: 0; left: auto;">
                             <li><a class="dropdown-item" href="/users/{{ \Auth::user()->id }}">Profile</a></li>
                             <li><a class="dropdown-item" href="/users/favorites/{{ \Auth::user()->id }}">favorites</a></li>
-                            <li><a class="dropdown-item" href="/messages/{{ \Auth::user()->id }}">Messages</a></li>
+                            <li><a class="dropdown-item" href="/messages">Messages</a></li>
                             <li><a class="dropdown-item" href="/logout">Logout</a></li>
                         </ul>
                     </div>
