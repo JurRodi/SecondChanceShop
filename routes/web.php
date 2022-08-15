@@ -24,7 +24,8 @@ Route::get('/products/{product}', [ProductsController::class, 'show']);
 Route::get('/products/edit/{product}', [ProductsController::class, 'edit'])->middleware('auth');
 Route::put('/products/update/{product}', [ProductsController::class, 'update'])->middleware('auth');
 Route::delete('/products/destroy/{product}', [ProductsController::class, 'destroy'])->middleware('auth');
-
+Route::get('/products/bid/{product}', [ProductsController::class, 'bid'])->middleware('auth');
+Route::post('/messages/placebid/{product}', [MessagesController::class, 'placebid'])->middleware('auth');
 
 Route::get('/register', [UserController::class, 'register']);
 Route::post('/register', [UserController::class, 'store']);
@@ -43,3 +44,5 @@ Route::group(['prefix' => 'messages'], function () {
     Route::post('/store/{user}', [MessagesController::class, 'store'])->middleware('auth');
     Route::get('/show/{user}', [MessagesController::class, 'show'])->middleware('auth');
 });
+
+Route::get('location', [LocationController::class, 'index']);
