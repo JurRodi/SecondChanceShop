@@ -16,7 +16,9 @@ class FavoriteProducts extends Component
 
     public function mount()
     {
-        $this->favorite = \App\Models\FavoriteProduct::where('product_id', $this->product->id)->where('user_id', Auth::user()->id)->exists();
+        if(Auth::check()){
+            $this->favorite = \App\Models\FavoriteProduct::where('product_id', $this->product->id)->where('user_id', Auth::user()->id)->exists();
+        }
         if ($this->favorite) {
             $this->btn = 'btn-warning';
         } else {
@@ -26,6 +28,9 @@ class FavoriteProducts extends Component
 
     public function favorite()
     {
+        if(!Auth::check()){
+            return redirect('/login');
+        }
         if ($this->favorite != true) {
             $favorite = new \App\Models\FavoriteProduct;
             $favorite->product_id = $this->product->id;
