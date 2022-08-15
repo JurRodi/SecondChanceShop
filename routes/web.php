@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\LocationController;
+use App\Http\Controllers\MessagesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,3 +36,10 @@ Route::get('/users/{user}', [UserController::class, 'index'])->middleware('auth'
 Route::get('/users/edit/{user}', [UserController::class, 'edit'])->middleware('auth');
 Route::put('/users/update/{user}', [UserController::class, 'update'])->middleware('auth');
 Route::get('/users/favorites/{user}', [UserController::class, 'favorites'])->middleware('auth');
+
+Route::group(['prefix' => 'messages'], function () {
+    Route::get('/', [MessagesController::class, 'index'])->middleware('auth');
+    Route::get('create/{user}', [MessagesController::class, 'create'])->middleware('auth');
+    Route::post('/store/{user}', [MessagesController::class, 'store'])->middleware('auth');
+    Route::get('/show/{user}', [MessagesController::class, 'show'])->middleware('auth');
+});
