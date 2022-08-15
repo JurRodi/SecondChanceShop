@@ -86,4 +86,9 @@ class ProductsController extends Controller
         $product->delete();
         return redirect('/');
     }
+
+    public function bid(\App\Models\Product $product){
+        $data['product'] = $product;
+        return view('products/bid', $data);
+    }
 }
