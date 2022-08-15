@@ -13,8 +13,8 @@
         @endcomponent
     @endif
 
-    <div class="w-50 ms-5 mb-3 bg-light d-flex justify-content-center" style="height: 500px;"><img src="{{ $product->image }}" alt="{{ $product->name }}" class="img-fluid"></div>
-    <div class="ms-5 w-50 d-flex justify-content-between">
+    <div class="mx-auto w-50 mb-3 bg-light d-flex justify-content-center" style="height: 500px;"><img src="{{ $product->image }}" alt="{{ $product->name }}" class="img-fluid"></div>
+    <div class="mx-auto w-50 d-flex justify-content-between">
         <div style="width: 70%;">
             <h3>{{ $product->name }}</h3>
             <p>{{ $product->description }}</p>

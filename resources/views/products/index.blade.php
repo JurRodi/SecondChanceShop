@@ -4,7 +4,7 @@
     <div class="mb-3">
         <a href="/products/create" class="btn btn-primary">Add product</a>
     </div>
-    <div style="display: flex; flex-wrap:wrap;">
+    <div class="mb-5" style="display: flex; flex-wrap:wrap;">
         @foreach($products as $product)
             @component('components/card')
                 @slot('image')
