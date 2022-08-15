@@ -43,11 +43,7 @@
         @else
             <div>
                 <livewire:favorite-products :product="$product" />
-                <form method="POST" action="/products/bid/{{ $product->id }}" class="d-inline">
-                    @method('POST')
-                    @csrf
-                    <button type="submit" class="btn btn-primary">Place bid</button>
-                </form>
+                <a href="/products/bid/{{ $product->id }}" class="btn btn-primary">Place bid</a>
             </div>
         @endif
     </div>
