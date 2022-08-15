@@ -50,5 +50,16 @@ class MessagesController extends Controller
         $data['messages'] = $messages;
         return view('messages/show', $data);
     }
-        
+    
+    public function placebid(Request $request, \App\Models\Product $product){
+        $request->validate([
+            'bid' => 'required|string',
+        ]);
+        $message = new \App\Models\Message();
+        $message->sender_id = Auth::user()->id;
+        $message->reciever_id = $product->user_id;
+        $message->body = Auth::user()->name . " has placed a bid of €" . $request->bid . " on " . $product->name . ".";
+        $message->save();
+        return redirect('/messages/show/'.$product->user_id);
+    }
 }
