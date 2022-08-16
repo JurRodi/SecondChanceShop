@@ -4,7 +4,7 @@
     cd /home/jur/SecondChanceShop
     php artisan down
     git reset --hard
-    git pull origin master
+    git pull origin main
     php composer.phar install
     php composer.phar dump-autoload
     php artisan migrate --force
@@ -19,7 +19,7 @@
     cd /home/jur/betaShop
     php artisan down
     git reset --hard
-    git pull origin master
+    git pull origin main
     php composer.phar install
     php composer.phar dump-autoload
     php artisan migrate --force
