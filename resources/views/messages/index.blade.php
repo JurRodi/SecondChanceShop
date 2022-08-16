@@ -8,11 +8,7 @@
                     <a class="pull-left text-decoration-none text-secondary d-flex justify-content-between" href="/messages/show/{{ $message->user->id }}">
                         <div class="d-flex" style="width: 70%">
                             <div class="d-flex align-items-center">
-                                @if($message->user->avatar == "avatar.svg")
-                                    <img src="{{ asset('storage/avatars/'.$message->user->avatar) }}" alt="{{ $message->user->name }}" class="img-fluid rounded-circle" style="width: 50px; height: 50px;">
-                                @else
-                                    <img src="{{ $message->user->avatar }}" alt="{{ $message->user->name }}" class="img-fluid rounded-circle me-2" style="width: 50px; height: 50px;">
-                                @endif
+                                <img src="{{ $message->user->avatar }}" alt="{{ $message->user->name }}" class="img-fluid rounded-circle me-2" style="width: 50px; height: 50px;">
                             </div>
                             <div class="ms-3 d-flex flex-column" style="max-width: 100%;">
                                 <h5 class="media-heading">{{ $message->user->name }}</h5>
