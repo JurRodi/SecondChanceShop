@@ -47,4 +47,16 @@ class User extends Authenticatable
     public function products(){
         return $this->hasMany(Product::class);
     }
+
+    public function favorites(){
+        return $this->hasMany(FavoriteProduct::class);
+    }
+
+    public function messages(){
+        return $this->hasMany(Message::class, 'sender_id');
+    }
+
+    public function recievedMessages(){
+        return $this->belongsTo(Message::class, 'reciever_id');
+    }
 }
